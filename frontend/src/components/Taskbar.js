@@ -7,15 +7,15 @@ function Taskbar(props) {
   return (
     <header>
       <body>
-        <div class="taskbar">
+        <div className="taskbar">
           <img src={Logo} alt="logo" className="logo" />
-          <div class="taskbar-items">
-            <div class="taskbar-item">
+          <div className="taskbar-items">
+            <div className="taskbar-item">
               <Link to="/" className="link">
                 <div>Swap</div>
               </Link>
             </div>
-            <div class="taskbar-item">
+            <div className="taskbar-item">
               <Link to="/tokens" className="link">
                 <div>Tokens</div>
               </Link>

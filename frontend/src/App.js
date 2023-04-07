@@ -24,7 +24,7 @@ function App() {
           <Route path="/tokens" element={<Tokens />} />
         </Routes>
       </div>
-      <Taskbar connect={connect} isConnected={isConnected} address={address} />
+      {/* <Taskbar connect={connect} isConnected={isConnected} address={address} /> */}
     </div>
   );
 }
