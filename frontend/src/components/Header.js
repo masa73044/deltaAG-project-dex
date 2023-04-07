@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Header(props) {
   const { address, isConnected, connect } = props;
   return (
-    <header>
+    <header className="taskbar">
       <div className="leftH">
         <img src={Logo} alt="logo" className="logo" />
         <Link to="/" className="link">
