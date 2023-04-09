@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSendTransaction, useWaitForTransaction } from "wagmi";
 import tokenList from "../tokenList.json";
+import WindowSwap from "./WindowSwap";
 
 function Swap(props) {
   const { address, isConnected } = props;
@@ -20,6 +21,8 @@ function Swap(props) {
     value: null,
   });
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const { data, sendTransaction } = useSendTransaction({
     request: {
       from: address,
@@ -29,7 +32,116 @@ function Swap(props) {
     },
   });
 
-  return <>{/* <div>test</div> */}</>;
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  function handleSlippageChange(e) {
+    setSlippage(e.target.value);
+  }
+
+  function changeAmount(e) {
+    setTokenOneAmount(e.target.value);
+    if (e.target.value && prices) {
+      setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2));
+    } else {
+      setTokenTwoAmount(null);
+    }
+  }
+
+  function switchTokens() {
+    setPrices(null);
+    setTokenOneAmount(null);
+    setTokenTwoAmount(null);
+    const one = tokenOne;
+    const two = tokenTwo;
+    setTokenOne(two);
+    setTokenTwo(one);
+    fetchPrices(two.address, one.address);
+  }
+
+  function openModal(asset) {
+    setChangeToken(asset);
+    setIsOpen(true);
+  }
+
+  function modifyToken(i) {
+    setPrices(null);
+    setTokenOneAmount(null);
+    setTokenTwoAmount(null);
+    if (changeToken === 1) {
+      setTokenOne(tokenList[i]);
+      fetchPrices(tokenList[i].address, tokenTwo.address);
+    } else {
+      setTokenTwo(tokenList[i]);
+      fetchPrices(tokenOne.address, tokenList[i].address);
+    }
+    setIsOpen(false);
+  }
+
+  // new functions
+
+  function handleButtonClick(option) {
+    console.log(`Clicked on option: ${option}`);
+    setMenuOpen(false);
+  }
+
+  async function fetchPrices(one, two) {
+    const res = await axios.get(`http://localhost:3001/tokenPrice`, {
+      params: { addressOne: one, addressTwo: two },
+    });
+    setPrices(res.data);
+  }
+
+  const settings = (
+    <>
+      <button className="dropdown-btn" onClick={() => setMenuOpen(!menuOpen)}>
+        Slippage Tolerance
+      </button>
+      {menuOpen && (
+        <div className="slippage-options" onChange={handleSlippageChange}>
+          <div>
+            <button value={0.5}> 0.5%</button>
+            <label htmlFor="slippage-0.5">0.5%</label>
+          </div>
+          <div>
+            <input
+              name="slippage"
+              value={2.5}
+              checked={slippage === 2.5}
+              onChange={handleSlippageChange}
+            />
+            <label htmlFor="slippage-2.5">2.5%</label>
+          </div>
+          <div>
+            <input
+              name="slippage"
+              value={5}
+              checked={slippage === 5}
+              onChange={handleSlippageChange}
+            />
+            <label htmlFor="slippage-5">5%</label>
+          </div>
+        </div>
+      )}
+    </>
+  );
+
+  return (
+    <>
+      <div>
+        <button onClick={() => setIsOpen(true)}>Open Modal</button>
+        <WindowSwap
+          open={isOpen}
+          title="Select a Token"
+          onCancel={() => setIsOpen(false)}
+        >
+          {/* Your modal content goes here */}
+        </WindowSwap>
+        {settings}
+      </div>
+    </>
+  );
 }
 
 export default Swap;

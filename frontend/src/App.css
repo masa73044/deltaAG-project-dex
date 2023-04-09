@@ -236,6 +236,10 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  max-height: 400px; /* Adjust this value based on your desired height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 10px; /* Optional: Add some padding to avoid the scroll bar overlapping content */
 }
 
 .tokenChoice {
