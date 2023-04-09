@@ -37,6 +37,8 @@ function Swap(props) {
   });
 
   function handleSlippageChange(e) {
+    setMenuOpen(false); // new feature
+
     setSlippage(e.target.value);
   }
 
@@ -80,11 +82,6 @@ function Swap(props) {
   }
 
   // new functions
-
-  function handleButtonClick(option) {
-    console.log(`Clicked on option: ${option}`);
-    setMenuOpen(false);
-  }
 
   async function fetchPrices(one, two) {
     const res = await axios.get(`http://localhost:3001/tokenPrice`, {
