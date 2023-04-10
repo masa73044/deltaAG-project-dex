@@ -137,7 +137,7 @@ function Swap(props) {
           <div class="title-bar">Delta Swap</div>
           <div class="content">
             <div class="dropdown">
-              <button class="dropdown-button">Options</button>
+              <button class="dropdown-button">Slippage</button>
               <div class="dropdown-content">
                 <a href="#">Option 1</a>
                 <a href="#">Option 2</a>

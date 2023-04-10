@@ -359,7 +359,9 @@ body {
 }
 
 .dropdown {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   display: inline-block;
   font-family: "Tahoma", sans-serif;
   font-size: 14px;
@@ -381,6 +383,7 @@ body {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  right: 0;
 }
 
 .dropdown-content a {
