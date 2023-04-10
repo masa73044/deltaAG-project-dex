@@ -132,9 +132,11 @@ function Swap(props) {
           open={isOpen}
           title="Select a Token"
           onCancel={() => setIsOpen(false)}
-        >
-          {/* Your modal content goes here */}
-        </WindowSwap>
+        ></WindowSwap>
+        <div class="window">
+          <div class="title-bar">Delta Swap</div>
+          <div class="content"></div>
+        </div>
         {settings}
       </div>
     </>
