@@ -8,10 +8,12 @@ https://docs.1inch.io/docs/aggregation-protocol/api/swagger/
 
 ## Installation
 
+Run on frontend
 ```bash
 npm start
 ```
 
+Run on backend
 ```bash
 node index.js
 ```
