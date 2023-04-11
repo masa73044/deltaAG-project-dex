@@ -78,7 +78,8 @@ code {
 }
 
 .ant-modal-content {
-  background-color: #0e111b !important;
+  /* background-color: #0e111b !important; */
+  background-color: rgb(128, 128, 128) !important;
   color: white !important;
   padding: 0px !important;
 }
@@ -90,7 +91,7 @@ code {
 }
 
 .ant-modal-header {
-  background-color: #0e111b !important;
+  background-color: rgb(128, 128, 128) !important;
 }
 
 .ant-modal-title {
