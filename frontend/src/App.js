@@ -1,6 +1,5 @@
 import "./App.css";
 import Header from "./components/Header";
-import WindowSwap from "./components/WindowSwap";
 import Swap from "./components/Swap";
 import Tokens from "./components/Tokens";
 import { useConnect, useAccount } from "wagmi";
@@ -24,9 +23,6 @@ function App() {
           <Route path="/tokens" element={<Tokens />} />
         </Routes>
       </div>
-      <WindowSwap />
-
-      {/* <Taskbar connect={connect} isConnected={isConnected} address={address} /> */}
     </div>
   );
 }

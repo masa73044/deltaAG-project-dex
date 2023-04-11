@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSendTransaction, useWaitForTransaction } from "wagmi";
 import tokenList from "../tokenList.json";
-import WindowSwap from "./WindowSwap";
 import { Input, Popover, Radio, Modal, message } from "antd";
 import {
   ArrowDownOutlined,
@@ -98,6 +97,8 @@ function Swap(props) {
     });
     setPrices(res.data);
   }
+
+  async function fetchDexSwap() {}
 
   // const settings = (
   //   <>
@@ -216,6 +217,13 @@ function Swap(props) {
               <SettingOutlined className="dropdown-button" />
             </div>
           </Popover>
+          <div
+            className="swap-button"
+            disabled={!tokenOneAmount || !isConnected}
+            onClick={fetchDexSwap}
+          >
+            Swap
+          </div>
         </div>
       </div>
     </>
