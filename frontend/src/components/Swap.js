@@ -12,7 +12,7 @@ import {
 
 function Swap(props) {
   const { address, isConnected } = props;
-  // const [messageApi, contextHolder] = message.useMessage()
+  const [messageApi, contextHolder] = message.useMessage();
   const [slippage, setSlippage] = useState(2.5);
   const [tokenOneAmount, setTokenOneAmount] = useState(null);
   const [tokenTwoAmount, setTokenTwoAmount] = useState(null);
@@ -98,7 +98,68 @@ function Swap(props) {
     setPrices(res.data);
   }
 
-  async function fetchDexSwap() {}
+  async function fetchDexSwap() {
+    const allowance = await axios.get(
+      `https://api.1inch.io/v5.0/1/approve/allowance?tokenAddress=${tokenOne.address}&walletAddress=${address}`
+    );
+
+    if (allowance.data.allowance === "0") {
+      const approve = await axios.get(
+        `https://api.1inch.io/v5.0/1/approve/transaction?tokenAddress=${tokenOne.address}`
+      );
+
+      setTxDetails(approve.data);
+      console.log("not approved");
+      return;
+    }
+
+    const tx =
+      await axios.get(`https://api.1inch.io/v5.0/1/swap?fromTokenAddress=${
+        tokenOne.address
+      }&toTokenAddress=${tokenTwo.address}&amount=${tokenOneAmount.padEnd(
+        tokenOne.decimals + tokenOneAmount.length,
+        "0"
+      )}&fromAddress=${address}&slippage=${slippage}
+`);
+  }
+
+  useEffect(() => {
+    fetchPrices(tokenList[0].address, tokenList[1].address);
+  }, []);
+
+  useEffect(() => {
+    if (txDetails.to && isConnected) {
+      sendTransaction();
+    }
+  }, [txDetails]);
+
+  useEffect(() => {
+    messageApi.destroy();
+    if (isLoading) {
+      messageApi.open({
+        type: "loading",
+        content: "Transaction is Pending...",
+        duration: 0,
+      });
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    messageApi.destroy();
+    if (isSuccess) {
+      messageApi.open({
+        type: "success",
+        content: "Transaction Successful",
+        duration: 1.5,
+      });
+    } else if (txDetails.to) {
+      messageApi.open({
+        type: "error",
+        content: "Transaction Failed",
+        duration: 1.5,
+      });
+    }
+  }, [isSuccess]);
 
   // const settings = (
   //   <>
@@ -134,6 +195,8 @@ function Swap(props) {
 
   return (
     <>
+      {contextHolder}
+
       <div>
         <Modal
           open={isOpen}
@@ -192,6 +255,7 @@ function Swap(props) {
                   className="input"
                   placeholder="0"
                   value={tokenTwoAmount}
+                  onChange={changeAmount}
                   disabled={true}
                 />
 
