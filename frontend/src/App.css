@@ -79,6 +79,28 @@ header {
   color: white;
 }
 
+.task-bar-item {
+  display: inline-block;
+  font-size: 20px;
+  color: #000000;
+  background-color: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-bottom: 1px solid #808080;
+  border-right: 1px solid #808080;
+  padding: 5px 10px;
+  margin-right: 2px;
+  cursor: pointer;
+}
+
+.task-bar-item:hover {
+  background-color: #b0b0b0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+
 .tradeBox {
   width: 400px;
   background-color: #0e111b;
