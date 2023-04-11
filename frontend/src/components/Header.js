@@ -18,7 +18,7 @@ function Header(props) {
         </Link>
       </div>
       <div className="rightH">
-        <div className="task-bar-item">
+        <div className="task-bar-item2">
           <img src={Eth} alt="eth" className="eth" />
           Ethereum
         </div>
