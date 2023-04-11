@@ -9,15 +9,16 @@ function Header(props) {
     <header className="taskbar">
       <div className="leftH">
         <img src={Logo} alt="logo" className="logo" />
+
         <Link to="/" className="link">
-          <div className="headerItem">Swap</div>
+          <div className="task-bar-item">Swap</div>
         </Link>
         <Link to="/tokens" className="link">
-          <div className="headerItem">Tokens</div>
+          <div className="task-bar-item">Tokens</div>
         </Link>
       </div>
       <div className="rightH">
-        <div className="headerItem">
+        <div className="task-bar-item">
           <img src={Eth} alt="eth" className="eth" />
           Ethereum
         </div>

@@ -3,6 +3,12 @@ import axios from "axios";
 import { useSendTransaction, useWaitForTransaction } from "wagmi";
 import tokenList from "../tokenList.json";
 import WindowSwap from "./WindowSwap";
+import { Input, Popover, Radio, Modal, message } from "antd";
+import {
+  ArrowDownOutlined,
+  DownOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 
 function Swap(props) {
   const { address, isConnected } = props;
@@ -83,6 +89,8 @@ function Swap(props) {
 
   // new functions
 
+  function handleOptionClick() {}
+
   async function fetchPrices(one, two) {
     const res = await axios.get(`http://localhost:3001/tokenPrice`, {
       params: { addressOne: one, addressTwo: two },
@@ -90,52 +98,61 @@ function Swap(props) {
     setPrices(res.data);
   }
 
+  // const settings = (
+  //   <>
+  //     <div class="dropdown">
+  //       <button class="dropdown-button">Slippage</button>
+  //       <div class="dropdown-content" onChange={handleSlippageChange}>
+  //         <button onClick={() => handleOptionClick("0.5")}>
+  //           0.5%
+  //         </button>
+  //         <button onClick={() => handleOptionClick("Option 2")}>
+  //           2.5%
+  //         </button>
+  //         <button onClick={() => handleOptionClick("Option 3")}>
+  //           5%
+  //         </button>
+  //       </div>
+  //     </div>
+  //   </>
+  // );
+
   const settings = (
     <>
-      <button className="dropdown-btn" onClick={() => setMenuOpen(!menuOpen)}>
-        Slippage Tolerance
-      </button>
-      {menuOpen && (
-        <div className="slippage-options" onChange={handleSlippageChange}>
-          <div>
-            <button value={0.5}> 0.5%</button>
-            <label htmlFor="slippage-0.5">0.5%</label>
-          </div>
-          <div>
-            <input
-              name="slippage"
-              value={2.5}
-              checked={slippage === 2.5}
-              onChange={handleSlippageChange}
-            />
-            <label htmlFor="slippage-2.5">2.5%</label>
-          </div>
-          <div>
-            <input
-              name="slippage"
-              value={5}
-              checked={slippage === 5}
-              onChange={handleSlippageChange}
-            />
-            <label htmlFor="slippage-5">5%</label>
-          </div>
-        </div>
-      )}
+      <div>Slippage Tolerance</div>
+      <div>
+        <Radio.Group value={slippage} onChange={handleSlippageChange}>
+          <Radio.Button value={0.5}>0.5%</Radio.Button>
+          <Radio.Button value={2.5}>2.5%</Radio.Button>
+          <Radio.Button value={5}>5.0%</Radio.Button>
+        </Radio.Group>
+      </div>
     </>
   );
 
   return (
     <>
       <div>
-        <button onClick={() => setIsOpen(true)}>Open Modal</button>
+        {/* <button onClick={() => setIsOpen(true)}>Open Modal</button>
         <WindowSwap
           open={isOpen}
           title="Select a Token"
           onCancel={() => setIsOpen(false)}
-        >
-          {/* Your modal content goes here */}
-        </WindowSwap>
-        {settings}
+        ></WindowSwap> */}
+        <div class="window">
+          <div class="title-bar">Delta Swap</div>
+          <div class="content"></div>
+          <Popover
+            content={settings}
+            title="Settings"
+            trigger="click"
+            placement="bottomRight"
+          >
+            <div className="dropdown">
+              <SettingOutlined className="dropdown-button" />
+            </div>
+          </Popover>
+        </div>
       </div>
     </>
   );
