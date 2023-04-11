@@ -376,6 +376,10 @@ body {
   outline: none;
 }
 
+.dropdown-button:hover {
+  background-color: #b0b0b0;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -386,22 +390,125 @@ body {
   right: 0;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 5px 12px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
+/* .input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+} */
+
+.input {
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Courier New", monospace;
+  /* Change the font */
+  border: 2px outset #808080;
+  /* Change the border */
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 200px;
+  box-shadow: inset 0 0 1px 1px #000000;
+  /* Add box-shadow */
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.middle-button {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #808080;
+  background-color: #c0c0c0;
+  cursor: pointer;
+  width: 100%;
+  max-width: 80px;
 }
 
-.dropdown:hover .dropdown-button {
+.middle-button:hover {
   background-color: #b0b0b0;
+}
+
+/* test */
+
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.asset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 20px;
+}
+
+/* test */
+/* flex by col not wrapper */
+
+.asset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #c0c0c0;
+  padding: 4px 8px;
+  border: 1px solid #808080;
+  border-radius: 2px;
+  font-family: "MS Sans Serif", sans-serif;
+  font-size: 12px;
+  color: #000;
+  box-shadow: inset 1px 1px 0px #fff, inset -1px -1px 0px #808080;
+}
+
+.asset:hover {
+  background-color: #b0b0b0;
+  cursor: pointer;
+}
+
+.modalContent {
+  background-color: #c0c0c0;
+  border: 1px solid #808080;
+  padding: 10px;
+}
+
+.tokenChoice {
+  display: flex;
+  align-items: center;
+  background-color: #c0c0c0;
+  border: 1px solid #808080;
+  padding: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.tokenChoice:hover {
+  background-color: #b0b0b0;
+}
+
+.tokenLogo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.tokenChoiceNames {
+  display: flex;
+  flex-direction: column;
+}
+
+.tokenName,
+.tokenTicker {
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 2px;
 }

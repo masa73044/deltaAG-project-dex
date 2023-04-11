@@ -8,6 +8,7 @@ import {
   ArrowDownOutlined,
   DownOutlined,
   SettingOutlined,
+  CaretDownOutlined,
 } from "@ant-design/icons";
 
 function Swap(props) {
@@ -133,15 +134,78 @@ function Swap(props) {
   return (
     <>
       <div>
-        {/* <button onClick={() => setIsOpen(true)}>Open Modal</button>
-        <WindowSwap
+        <Modal
           open={isOpen}
-          title="Select a Token"
+          footer={null}
           onCancel={() => setIsOpen(false)}
-        ></WindowSwap> */}
+          title="Select a Token"
+        >
+          <div className="modalContent">
+            {tokenList?.map((e, i) => {
+              return (
+                <div
+                  className="tokenChoice"
+                  key={i}
+                  onClick={() => modifyToken(i)}
+                >
+                  <img src={e.img} alt={e.ticker} className="tokenLogo" />
+                  <div className="tokenChoiceNames">
+                    <div className="tokenName">{e.name}</div>
+                    <div className="tokenTicker">{e.ticker}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Modal>
+
         <div class="window">
           <div class="title-bar">Delta Swap</div>
-          <div class="content"></div>
+          <div class="content">
+            <div class="input-container">
+              <div className="input-row">
+                <input
+                  className="input"
+                  placeholder="0"
+                  value={tokenOneAmount}
+                  onChange={changeAmount}
+                  // disabled={!prices}
+                />
+                <div className="asset" onClick={() => openModal(1)}>
+                  <img
+                    src={tokenOne.img}
+                    alt="assetOneLogo"
+                    className="assetLogo"
+                  />
+                  {tokenOne.ticker}
+                  <DownOutlined />
+                </div>
+              </div>
+
+              <div className="middle-button" onClick={switchTokens}>
+                <ArrowDownOutlined />
+              </div>
+              <div className="input-row">
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="0"
+                  value={tokenTwoAmount}
+                  disabled={true}
+                />
+
+                <div className="asset" onClick={() => openModal(2)}>
+                  <img
+                    src={tokenTwo.img}
+                    alt="assetTwoLogo"
+                    className="assetLogo"
+                  />
+                  {tokenTwo.ticker}
+                  <DownOutlined />
+                </div>
+              </div>
+            </div>
+          </div>
           <Popover
             content={settings}
             title="Settings"
