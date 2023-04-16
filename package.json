@@ -1,0 +1,24 @@
+{
+  "name": "deltaag-dex",
+  "version": "1.0.0",
+  "description": "![Delta AG Dex](https://user-images.githubusercontent.com/108378047/230555930-79f26edf-a838-4008-84ad-42e57a8c18d8.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:both": "concurrently \"npm start --prefix frontend\" \"node backend/index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masa73044/deltaAG-project-dex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masa73044/deltaAG-project-dex/issues"
+  },
+  "homepage": "https://github.com/masa73044/deltaAG-project-dex#readme",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
