@@ -7,11 +7,9 @@ https://docs.1inch.io/docs/aggregation-protocol/api/swagger/
 ## Installation
 
 ```bash
-npm start
-```
-
-```bash
-node index.js
+npm run start:both
 ```
 
 ![Delta AG Dex](https://user-images.githubusercontent.com/108378047/230555930-79f26edf-a838-4008-84ad-42e57a8c18d8.png)
+
+<img width="1319" alt="Screenshot 2023-04-12 at 7 41 13 AM" src="https://user-images.githubusercontent.com/108378047/231343257-d24452a9-8bad-4a63-89f2-e86924b53100.png">
