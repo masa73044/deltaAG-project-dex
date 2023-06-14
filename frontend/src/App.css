@@ -556,3 +556,13 @@ body {
   background-color: #0000cd;
   cursor: pointer;
 }
+
+#tokenList {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  overflow-y: "auto";
+  height: "200px";
+}

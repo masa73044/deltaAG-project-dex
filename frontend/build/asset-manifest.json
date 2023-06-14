@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0e54b8fd.css",
+    "main.js": "/static/js/main.a4d3a036.js",
+    "static/media/SHPinscher-Regular.otf": "/static/media/SHPinscher-Regular.d72b6f2835729969d530.otf",
+    "index.html": "/index.html",
+    "static/media/eth.svg": "/static/media/eth.df265e367364f285053a1285ad8d418d.svg",
+    "main.0e54b8fd.css.map": "/static/css/main.0e54b8fd.css.map",
+    "main.a4d3a036.js.map": "/static/js/main.a4d3a036.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0e54b8fd.css",
+    "static/js/main.a4d3a036.js"
+  ]
+}
